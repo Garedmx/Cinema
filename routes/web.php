@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('edad/{edad?}',function($edad='20'){
+    return 'tu edad es de '.$edad;
+});
+
 Route::get('usuario/{codigo}',function($codigo){
     return 'hola usuario'.$codigo;
 })->where('codigo','[0-9]+');
+
+Route::get('controlador','PruebaController@index');
+Route::get('name/{nombre?}','PruebaController@nombre');
+
+Route::resource('movie','MovieController');
