@@ -1,8 +1,8 @@
 <?php
 
-namespace Market\Http\Controllers\Auth;
+namespace Cinema\Http\Controllers\Auth;
 
-use Market\Http\Controllers\Controller;
+use Cinema\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller

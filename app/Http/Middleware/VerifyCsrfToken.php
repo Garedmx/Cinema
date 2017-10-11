@@ -1,6 +1,6 @@
 <?php
 
-namespace Market\Http\Middleware;
+namespace Cinema\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
 

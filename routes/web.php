@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('usuario',function(){
-    return 'hola mundo';
-});
+Route::get('usuario/{codigo}',function($codigo){
+    return 'hola usuario'.$codigo;
+})->where('codigo','[0-9]+');

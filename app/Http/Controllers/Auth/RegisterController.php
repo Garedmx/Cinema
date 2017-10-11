@@ -1,9 +1,9 @@
 <?php
 
-namespace Market\Http\Controllers\Auth;
+namespace Cinema\Http\Controllers\Auth;
 
-use Market\User;
-use Market\Http\Controllers\Controller;
+use Cinema\User;
+use Cinema\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -58,7 +58,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \Market\User
+     * @return \Cinema\User
      */
     protected function create(array $data)
     {

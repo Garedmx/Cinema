@@ -1,6 +1,6 @@
 <?php
 
-namespace Market\Exceptions;
+namespace Cinema\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

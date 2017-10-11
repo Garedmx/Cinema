@@ -1,6 +1,6 @@
 <?php
 
-namespace Market\Providers;
+namespace Cinema\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;
