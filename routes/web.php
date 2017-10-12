@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
 
@@ -26,4 +26,9 @@ Route::get('usuario/{codigo}',function($codigo){
 Route::get('controlador','PruebaController@index');
 Route::get('name/{nombre?}','PruebaController@nombre');
 
-Route::resource('movie','MovieController');
+Route::resource('movie','MovieController');*/
+
+Route::get('/','FrontController@index');
+Route::get('contacto','FrontController@contacto');
+Route::get('reviews','FrontController@reviews');
+Route::get('admin','FrontController@admin');
