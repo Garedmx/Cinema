@@ -3,8 +3,12 @@
 namespace Cinema\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class FrontController extends Controller
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+use Cinema\User;
+use Cinema\Http\Requests\UserCreateRequest;
+use Cinema\Http\Requests\UserUpdateRequest;
+class UsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,19 +17,8 @@ class FrontController extends Controller
      */
     public function index()
     {
-        return view('index');
-    }
-    
-    public function contacto(){
-        return view('contacto');
-    }
-    
-    public function reviews(){
-        return view('reviews');
-    }
-    
-    public function admin(){
-        return view('admin.index');
+        $users= User::all();
+        return view('usuario.index', compact('users'));
     }
 
     /**
@@ -35,7 +28,7 @@ class FrontController extends Controller
      */
     public function create()
     {
-        //
+        return view('usuario.create');
     }
 
     /**
@@ -44,9 +37,17 @@ class FrontController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserCreateRequest $request)
     {
-        //
+        User::create([
+            'name'=> $request['name'],
+            'email' => $request['email'],
+            'password' => $request['pass'],
+        ]);
+        
+        Session::flash('message','Excelene! Usuario creado con éxito.');
+        return Redirect::to('usuario');
+        
     }
 
     /**
@@ -68,7 +69,8 @@ class FrontController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('usuario.edit',['user'=>$user]);
     }
 
     /**
@@ -78,9 +80,14 @@ class FrontController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->fill($request->all());
+        $user->save();
+        
+        Session::flash('message','Excelene! Usuario modificado con éxito.');
+        return Redirect::to('usuario');
     }
 
     /**
@@ -91,6 +98,8 @@ class FrontController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        Session::flash('message','Excelene! Usuario eliminado con éxito.');
+        return Redirect::to('usuario');
     }
 }

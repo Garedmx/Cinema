@@ -20,13 +20,13 @@ return [
     | Application Environment
     |--------------------------------------------------------------------------
     |
-    | This value determines the "environment" your application is currently
+    | This value determines the "environment or production" your application is currently
     | running in. This may determine how you prefer to configure various
     | services your application utilizes. Set this in your ".env" file.
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV', 'environment'),
 
     /*
     |--------------------------------------------------------------------------
@@ -167,6 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -225,6 +226,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 
