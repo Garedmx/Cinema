@@ -8,8 +8,15 @@ use Illuminate\Support\Facades\Redirect;
 use Cinema\User;
 use Cinema\Http\Requests\UserCreateRequest;
 use Cinema\Http\Requests\UserUpdateRequest;
+//use Illuminate\Routing\Route;
+
 class UsuarioController extends Controller
 {
+   public function __construct() {
+        $this->middleware('auth');
+        $this->middleware('admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +24,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $users= User::all();
+        $users= User::paginate(2);
         return view('usuario.index', compact('users'));
     }
 
@@ -42,7 +49,7 @@ class UsuarioController extends Controller
         User::create([
             'name'=> $request['name'],
             'email' => $request['email'],
-            'password' => $request['pass'],
+            'password' => $request['password'],
         ]);
         
         Session::flash('message','Excelene! Usuario creado con éxito.');
@@ -71,6 +78,7 @@ class UsuarioController extends Controller
     {
         $user = User::find($id);
         return view('usuario.edit',['user'=>$user]);
+        //return view('usuario.edit',['user'=>$this->user]);
     }
 
     /**
@@ -86,6 +94,9 @@ class UsuarioController extends Controller
         $user->fill($request->all());
         $user->save();
         
+        //$this->user->fill($request->all());
+        //$this->user->save();
+        
         Session::flash('message','Excelene! Usuario modificado con éxito.');
         return Redirect::to('usuario');
     }
@@ -98,7 +109,11 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        //User::destroy($id);
+        $user= User::find($id);
+        $user->delete();
+        
+        //$this->user->delete();
         Session::flash('message','Excelene! Usuario eliminado con éxito.');
         return Redirect::to('usuario');
     }

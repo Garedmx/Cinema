@@ -1,15 +1,16 @@
 <?php
 
 namespace Cinema\Http\Controllers;
-
 use Illuminate\Http\Request;
 
-class FrontController extends Controller
-{
-    public function __construct() {
-        $this->middleware('auth',['only'=>'admin']);
-    }
+use Auth;
+use Session;
+use Redirect;
 
+use Cinema\Http\Requests\LoginRequest;
+
+class LogController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
@@ -17,19 +18,7 @@ class FrontController extends Controller
      */
     public function index()
     {
-        return view('index');
-    }
-    
-    public function contacto(){
-        return view('contacto');
-    }
-    
-    public function reviews(){
-        return view('reviews');
-    }
-    
-    public function admin(){
-        return view('admin.index');
+        //
     }
 
     /**
@@ -48,9 +37,19 @@ class FrontController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LoginRequest $request)
     {
-        //
+        if(Auth::attempt(['email'=> $request['email'],'password'=>$request['password']])){
+            return Redirect::to('admin');
+        }
+        Session::flash('message-error','Datos son Incorrectos');
+        return Redirect::to('/');
+        
+    }
+    
+    public function logout(){
+        Auth::logout();
+        return Redirect::to('/');
     }
 
     /**

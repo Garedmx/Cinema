@@ -3,33 +3,27 @@
 namespace Cinema\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Cinema\Genre;
 
-class FrontController extends Controller
+class GeneroController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth',['only'=>'admin']);
-    }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function listing(){
+        $genres= Genre::all();
+        
+        return response()->json(
+                $genres->toArray()
+        );
+    }
+    
     public function index()
     {
-        return view('index');
-    }
-    
-    public function contacto(){
-        return view('contacto');
-    }
-    
-    public function reviews(){
-        return view('reviews');
-    }
-    
-    public function admin(){
-        return view('admin.index');
+        //
+        return view('genero.index');
     }
 
     /**
@@ -40,6 +34,7 @@ class FrontController extends Controller
     public function create()
     {
         //
+        return view('genero.create');
     }
 
     /**
@@ -51,6 +46,12 @@ class FrontController extends Controller
     public function store(Request $request)
     {
         //
+        if($request->ajax()){
+            Genre::create($request->all());
+            return response()->json([
+                "mensaje"=>"creado",
+            ]);
+        }
     }
 
     /**
@@ -73,6 +74,11 @@ class FrontController extends Controller
     public function edit($id)
     {
         //
+        $genre= Genre::find($id);
+        
+        return response()->json(
+                $genre->toArray()
+        );
     }
 
     /**
@@ -85,6 +91,13 @@ class FrontController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $genre=Genre::find($id);
+        $genre->fill($request->all());
+        $genre->save();
+        
+        return response()->json([
+            'mensaje'=>'listo'
+        ]);
     }
 
     /**

@@ -8,5 +8,5 @@
 </div>
 <div class="form-group">
     {!!Form::label('Contraseña:')!!}
-    {!!Form::password('pass',['class'=>'form-control','placeholder'=>'Ingresa tu Contraseña'])!!}
+    {!!Form::password('password',['class'=>'form-control','placeholder'=>'Ingresa tu Contraseña'])!!}
 </div>
