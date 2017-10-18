@@ -4,9 +4,13 @@ namespace Cinema\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Cinema\Genre;
+use Cinema\Http\Requests\GenreRequest;
 
 class GeneroController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -43,14 +47,12 @@ class GeneroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GenreRequest $request)
     {
         //
         if($request->ajax()){
             Genre::create($request->all());
-            return response()->json([
-                "mensaje"=>"creado",
-            ]);
+            return response()->json(['mensaje'=>'creado']);
         }
     }
 
@@ -109,5 +111,9 @@ class GeneroController extends Controller
     public function destroy($id)
     {
         //
+        $genre= Genre::find($id);
+        $genre->delete();
+        
+        return response()->json(['mensaje'=>'Borrado']);
     }
 }

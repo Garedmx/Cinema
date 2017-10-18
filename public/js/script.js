@@ -23,6 +23,10 @@ $("#registro").click(function(){
         success:function(){
             $("#msj-success").fadeIn();
         },
+        error:function(msj){
+            $('#msj').html(msj.responseJSON.errors.genre);
+            $('#msj-error').fadeIn();
+        },
    });
 });
 
