@@ -8,11 +8,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 <head>
 <title>Cinema A Entertainment Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<!-- Custom Theme files -->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- Custom Theme files -->
-<script src="js/jquery.min.js"></script>
+{!!Html::style("css/bootstrap.css")!!}
+{!!Html::style("css/style.css")!!}
+{!!Html::script("js/jquery.min.js")!!}
+
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -27,9 +26,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="full">
 			<div class="menu">
 				<ul>
-					<li><a class="active" href="index.html"><i class="home"></i></a></li>
-					<li><a href="reviews.html"><div class="cat"><i class="watching"></i><i class="watching1"></i></div></a></li>
-					<li><a href="contact.html"><div class="cnt"><i class="contact"></i><i class="contact1"></i></div></a></li>
+					<li><a class="active" href="{!!URL::to('/')!!}"><i class="home"></i></a></li>
+					<li><a href="{!!URL::to('/reviews')!!}"><div class="cat"><i class="watching"></i><i class="watching1"></i></div></a></li>
+					<li><a href="{!!URL::to('/contacto')!!}"><div class="cnt"><i class="contact"></i><i class="contact1"></i></div></a></li>
 				</ul>
 			</div>
 		<div class="main">

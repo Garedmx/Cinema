@@ -5,7 +5,7 @@
  */
 $("#registro").click(function(){
    var dato = $("#genre").val(); 
-   var route = "http://127.0.0.1:8000/genero";
+   var route = "/genero";
    var toke = $("#token").val();
    
    $.ajax({

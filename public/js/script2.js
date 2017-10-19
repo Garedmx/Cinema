@@ -9,7 +9,7 @@ $(document).ready(function(){
 
 function carga(){
     var tablaDatos = $('#datos');
-    var route = 'http://127.0.0.1:8000/generos';
+    var route = '/generos';
     
     $("#datos").empty();
     $.get(route, function(res){
@@ -20,7 +20,7 @@ function carga(){
 }
 
 function Eliminar(btn){
-    var route="http://127.0.0.1:8000/genero/"+btn.value;
+    var route="/genero/"+btn.value;
     var token=$("#token").val();
     
     $.ajax({
@@ -36,7 +36,7 @@ function Eliminar(btn){
 }
 
 function Mostrar(btn){
-    var route='http://127.0.0.1:8000/genero/'+btn.value+'/edit';
+    var route='/genero/'+btn.value+'/edit';
     
     $.get(route, function(res){
         $("#genre").val(res.genre);
@@ -47,7 +47,7 @@ function Mostrar(btn){
 $("#actualizar").click(function(){
     var value=$("#id").val();
     var dato=$("#genre").val();
-    var route="http://127.0.0.1:8000/genero/"+value;
+    var route="/genero/"+value;
     var token=$("#token").val();
     
     $.ajax({

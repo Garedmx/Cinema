@@ -14,9 +14,12 @@ class Movie extends Model
     protected $fillable=['genre_id','name','cast','direction','duration','path'];
     
     public function setPathAttribute($path){
-        $name=Carbon::now()->second.$path->getClientOriginalName();
-        $this->attributes['path']= Carbon::now()->second.$path->getClientOriginalName();
-        \Storage::disk('local')->put($name,\File::get($path));
+        if(!empty($path))
+        {
+            $name=Carbon::now()->second.$path->getClientOriginalName();
+            $this->attributes['path']= Carbon::now()->second.$path->getClientOriginalName();
+            \Storage::disk('local')->put($name,\File::get($path));
+        }
     }
     
     public static function Movies(){

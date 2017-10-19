@@ -6,14 +6,8 @@
 <div class="header">
 			<div class="top-header">
 				<div class="logo">
-					<a href="index.html"><img src="images/logo.png" alt="" /></a>
+					<a href="{!!URL::to('/')!!}"><img src="images/logo.png" alt="" /></a>
 					<p>Movie Theater</p>
-				</div>
-				<div class="search">
-					<form>
-						<input type="text" value="Search.." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search..';}"/>
-						<input type="submit" value="">
-					</form>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -30,6 +24,9 @@
 					</div>
 					{!!Form::submit('Iniciar',['class'=>'btn btn-primary'])!!}
 				{!!Form::close()!!}
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    Olvidaste tu Password?
+                                </a>
 			</div>
 		</div>
 		<div class="review-slider">

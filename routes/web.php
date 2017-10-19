@@ -30,6 +30,7 @@ Route::resource('movie','MovieController');*/
 
 Route::get('/','FrontController@index');
 Route::get('contacto','FrontController@contacto');
+Route::resource('mail','MailController');
 Route::get('reviews','FrontController@reviews');
 Route::get('admin','FrontController@admin');
 
@@ -40,3 +41,6 @@ Route::resource('pelicula','MovieController');
 
 Route::resource('log','LogController');
 Route::get('logout','LogController@logout');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
