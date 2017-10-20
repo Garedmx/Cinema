@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Redirect;
 use Cinema\User;
 use Cinema\Http\Requests\UserCreateRequest;
 use Cinema\Http\Requests\UserUpdateRequest;
+use Cinema\State;
+use Cinema\Town;
 //use Illuminate\Routing\Route;
 
 class UsuarioController extends Controller
@@ -38,7 +40,15 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('usuario.create');
+        $states=State::pluck('name','id');
+        return view('usuario.create',compact('states'));
+    }
+    
+    public function getTowns(Request $request,$id){
+        if($request->ajax()){
+            $towns= Town::towns($id);
+            return response()->json($towns);
+        }
     }
 
     /**

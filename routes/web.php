@@ -35,6 +35,7 @@ Route::get('reviews','FrontController@reviews');
 Route::get('admin','FrontController@admin');
 
 Route::resource('usuario','UsuarioController');
+Route::get('towns/{id}','UsuarioController@getTowns');
 Route::resource('genero','GeneroController');
 Route::get('generos','GeneroController@listing');
 Route::resource('pelicula','MovieController');

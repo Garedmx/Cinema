@@ -10,3 +10,11 @@
     {!!Form::label('Contraseña:')!!}
     {!!Form::password('password',['class'=>'form-control','placeholder'=>'Ingresa tu Contraseña'])!!}
 </div>
+<div class="form-group">
+    {!!form::label('Ciudad:')!!}
+    {!!Form::select('state',$states,null,['id'=>'state'])!!}
+</div>
+<div class="form-group">
+    {!!Form::label('Municipio/Estado')!!}
+    {!!Form::select('town',['plaseholder'=>'Selecciona'],null,['id'=>'town'])!!}
+</div>

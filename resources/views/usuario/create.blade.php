@@ -6,4 +6,8 @@
         @include('usuario.forms.usr')
         {!!Form::submit('Guardar',['class'=>'btn btn-primary'])!!}
     {!!Form::Close()!!}
-@stop
+@endsection
+
+@section('scripts')
+   {!!Html::script('js/dropdown.js')!!}
+@endsection
