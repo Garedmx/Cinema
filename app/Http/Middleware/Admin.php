@@ -12,7 +12,6 @@ class Admin
     public function __construct(Guard $auth) {
         $this->auth = $auth;
     }
-
     /**
      * Handle an incoming request.
      *

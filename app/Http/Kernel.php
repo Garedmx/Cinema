@@ -58,5 +58,6 @@ class Kernel extends HttpKernel
         'guest' => \Cinema\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'admin'=> \Cinema\Http\Middleware\Admin::class,
+        'find'=> \Cinema\Http\Middleware\find::class
     ];
 }
