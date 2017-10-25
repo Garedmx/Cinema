@@ -12,7 +12,8 @@ class StatesTablaSeeder extends Seeder
     public function run()
     {
         //
-        $states=[    
+        $states=[   
+                    ['name'=>'Ciudad de México'],
                     ['name'=>'Estado de México'],
                     ['name'=>'Veracruz'],
                     ['name'=>'Puebla'],

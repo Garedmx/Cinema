@@ -33,6 +33,11 @@ class CreateMoviesTable extends Migration
      */
     public function down()
     {
+        Schema::table('movies', function (Blueprint $table) {
+            $table->dropForeign('movies_genre_id_foreign');
+            $table->dropColumn('genre_id');
+        });
+
         Schema::dropIfExists('movies');
     }
 }
