@@ -11,7 +11,7 @@ class UsersTableSeedder extends Seeder
      */
     public function run()
     {
-        // php artisan db:seed
+        //
         
         DB::table('users')->insert([
             'name'=>'admin',
